@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:developer_studio/screen/home_screen.dart';
 import 'package:developer_studio/screen/detail_screen.dart';
-import 'dart:html' as html;
+import 'package:url_strategy/url_strategy.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main(){
-  html.window.history.pushState(null, '', '/');
+void main()async{
+
+  await GetStorage.init();
+  //remove # sign from url for flutter web 
+  setPathUrlStrategy();
+
   runApp(MaterialApp(
       title: 'Developer Studio' ,
       initialRoute:'/',
